@@ -1,16 +1,17 @@
 # Overview
-Quite often I need to query data using the DB2 clp and it's very difficult to read rows that are very large in width. Tom make it worse, sometimes (VAR)CHAR columns are defined with a big lenght but have actually small values, causing a lot of spaces being displayed.
+Quite often I need to query data using the DB2 clp on Linux and it's very difficult to read rows that are too large in width. To make it worse, sometimes (VAR)CHAR columns are defined with a big length but have actually small values, causing a lot of spaces to be displayed.
 
-To solve this I wrote this short AWK script that dynamically formats the SQL output (actually you can use it for any command's output) into fixed columns, based on the maximum lenght of each column.
+As a solution I wrote this short AWK script that dynamically formats the SQL output (you can actually use it for any command's output) into fixed columns, based on the maximum length of each column.
 
 # Usage
+Copy the script to $HOME/bin or to other preferred location and setup your PATH accordingly.
 ```bash
-db2 "select * from <table>" | ./format.awk
+db2 "select * from <table>" | format.awk
 ```
 
 # Examples
 
-Regula out in DB2 clp:
+Regular out in DB2 clp:
 ```bash
 db2 "select * from syscat.tables where tabschema = 'SYSIBM' and type = 'T' order by tabname fetch first 10 rows only"
 
@@ -33,9 +34,8 @@ SYSIBM                                                                          
 ```
 
 Using the format script:
-
 ```bash
-$ db2 "select * from syscat.tables where tabschema = 'SYSIBM' and type = 'T' order by tabname fetch first 10 rows only" | ./format.awk
+$ db2 "select * from syscat.tables where tabschema = 'SYSIBM' and type = 'T' order by tabname fetch first 10 rows only" | format.awk
 Max number of columns: 85
 Max size of each column: 11 26 26 26 26 8 7 8 9 8 4 10 6 10 9 10 11 11 32 11 7 13 14 9 13 8 18 9 11 20 18 21 22 9 13 10 9 15 4 21 6 7 14 8 12 6 13 10 8 6 6 11 6 9 8 11 13 13 7 12 11 7 7 12 8 8 17 10 13 8 26 18 15 13 23 21 7 15 12 13 8 15 17 15 7
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
