@@ -1,7 +1,7 @@
 # Overview
 Quite often I need to query data using the DB2 clp on Linux and it's very difficult to read rows that are too large in width. To make it worse, sometimes (VAR)CHAR columns are defined with a big length but have actually small values, causing a lot of spaces to be displayed.
 
-As a solution I wrote this short AWK script that dynamically formats the SQL output (you can actually use it for any command's output) into fixed columns, based on the maximum length of each column.
+As a solution I wrote this short AWK script that dynamically formats the SQL output (you can actually use it for any similar command's output) into fixed columns, based on the maximum length of each column.
 
 # Usage
 Copy the script to $HOME/bin or to other preferred location and setup your PATH accordingly.
