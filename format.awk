@@ -31,8 +31,7 @@ BEGIN{
    }
 
    if ( match($0, regex2) ) {
-      print "FOUND ->" $0
-	  records_selected = $0
+      records_selected = $0
       next
    }
    
